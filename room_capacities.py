@@ -1,13 +1,13 @@
 ROOM_CAPACITIES = {
-    269: 33,
-    438: 21,
-    270: 25,
-    258: 22,
-    365: 22,
-    2: 25,  
-    379: 20,
-    164: 21,
-    161: 14,
+    269: 33, # 35
+    438: 35, # 37
+    365: 38, # 41
+    455: 28, # 30
+      2: 28, # 31
+    377: 23, # 25
+    270: 18, # 21
+    258: 18, # 21
+    376: 18, # 21
 }
 
 def get_available_room(remaining_places: dict):
@@ -22,7 +22,7 @@ def get_available_room(remaining_places: dict):
             remaining_places[room_number] -= 1
             break
     
-    if not available_room:
+    if available_room is None:
         return available_room, remaining_places, False
 
     return available_room, remaining_places, True
