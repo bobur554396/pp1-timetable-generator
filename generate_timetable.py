@@ -21,7 +21,7 @@ LECTORS = {
     'KA': 'Келгенбаев Арнұр Ғалиасқарұлы',
 }
 STUDENT_DIR = 'students'
-DEFAULT_EXAM_DATETIME = datetime(2026, 9, 27, 9, 0, 0)
+DEFAULT_EXAM_DATETIME = datetime(2026, 10, 18, 9, 0, 0)
 EXAM_DURATION = timedelta(minutes=90)
 LATEST_EXAM_END = 18  # hour, exams finishing later than this are flagged
 

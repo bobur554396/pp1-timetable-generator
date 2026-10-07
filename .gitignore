@@ -26,3 +26,6 @@ Thumbs.db
 # Ignore JetBrains/PyCharm and VS Code settings
 .idea/
 .vscode/
+
+# local backups of student lists (not for git)
+students_bak_*/
