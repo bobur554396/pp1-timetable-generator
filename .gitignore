@@ -13,11 +13,11 @@ env/
 *.sqlite3
 *.db
 
-# Ignore student CSV files
-# students/*.csv
+# Ignore student CSV files (contain student personal data - provide your own)
+students/*.csv
 
-# Ignore generated timetable file
-# final_data.csv
+# Ignore generated timetable file (contains student data)
+final_data.csv
 
 # System files
 .DS_Store
@@ -27,5 +27,9 @@ Thumbs.db
 .idea/
 .vscode/
 
-# local backups of student lists (not for git)
+# local backups of student lists / generated files (not for git)
 students_bak_*/
+students_pre_*/
+final_data_pre_*.csv
+*_pre_*.csv
+*.csv.bak

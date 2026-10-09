@@ -50,14 +50,36 @@ timetable-generator/
 
 ---
 
+## 🔒 Student data is NOT tracked in git
+
+`students/*.csv` and the generated `final_data.csv` contain **student personal data** (IDs and
+names), so they are listed in `.gitignore` and are intentionally **not committed** to this public
+repository. Clone the repo and add your own `students/<CODE>.csv` files locally before running.
+
+---
+
 ## 📌 Usage
 
 1. **Prepare Student Data:**
-   - Place student lists inside the `students/` folder.
-   - Each file should be named as `<LECTOR_CODE>.csv` (e.g., `TE.csv`).
-   - Format each CSV file using **tab-separated values (`\t`)**:
+   - Place one student list per lector inside the `students/` folder.
+   - Each file must be named `<LECTOR_CODE>.csv`, where `<LECTOR_CODE>` is the lector's (teacher's)
+     code / initials. The valid codes and the lector they map to are defined in the `LECTORS`
+     dictionary at the top of `generate_timetable.py`, for example:
+     ```python
+     LECTORS = {
+         'AA': 'Ақша Аян Әділетұлы',
+         'BZ': 'Bolatov Zh',
+         'BB': 'Байсаков Бейсенбек Миятбекович',
+         'MB': 'Мухсимбаев Бобур Абдирахимович',
+         # ... one entry per lector
+     }
      ```
-     student_id<TAB>student_name
+     Order matters: if the same student ID appears in two lists, the lector listed **first** in
+     `LECTORS` keeps the student. To add or rename a lector, edit `LECTORS` and add the matching
+     `students/<CODE>.csv`.
+   - Format each CSV file using **tab-separated values (`\t`)**, two columns `student_id` and
+     `student_name` (no header row):
+     ```
      12345<TAB>John Doe
      67890<TAB>Jane Smith
      ```
@@ -66,9 +88,13 @@ timetable-generator/
    ```sh
    python generate_timetable.py
    ```
+   Exam date/time and duration are set by `DEFAULT_EXAM_DATETIME` / `EXAM_DURATION` in the script;
+   room seats are set in `room_capacities.py`.
 
 3. **View the generated timetable:**
-   - The output will be saved as `final_data.csv`.
+   - The output is saved as `final_data.csv`, also **tab-separated**, with columns:
+     `lector_code<TAB>student_id<TAB>student_name<TAB>exam_datetime<TAB>room`
+     (e.g. `AA<TAB>12345<TAB>John Doe<TAB>18.10.2026 / 09:00<TAB>269`).
 
 ---
 
